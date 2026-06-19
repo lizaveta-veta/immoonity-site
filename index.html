@@ -1342,6 +1342,7 @@
                     tooltip.style.left = '5%';
                     tooltip.style.right = '5%';
                     tooltip.style.top = (rect.top + 5) + 'px'; // Чуть ниже точки
+                    tooltip.style.marginTop = '-30px';
                     tooltip.style.width = '80%';
                     tooltip.style.transform = 'none';
                 } else {
@@ -1702,6 +1703,25 @@
     /* Спидометр */
     .meter-bg { width: 100%; height: 10px; background: #222; border-radius: 5px; margin-top: 15px; overflow: hidden; }
     .meter-fill { height: 100%; width: 0%; transition: width 1s ease, background 1s ease; }
+    
+    @media (max-width: 900px) {     
+        .form-content.active {
+            display: grid !important; 
+            grid-template-areas: 
+                "d"
+                "i"; /* d = desc (верх), i = inputs (низ) */
+            grid-template-columns: 1fr;
+        }
+
+        .form-content .desc {
+            grid-area: d; /* Ставим desc наверх */
+            margin-bottom: 20px;
+        }
+
+        .form-content .inputs {
+            grid-area: i; /* Ставим inputs вниз */
+        }
+    }
 </style>
 
 <section class="demo-wrapper" id="demo">
