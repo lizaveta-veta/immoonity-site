@@ -112,6 +112,60 @@
        /* Адаптация под мобильные */
        @media (max-width: 768px) {
            .menu-toggle { display: flex; } /* Показываем бургер */
+       @media (max-width: 768px) {
+    /* 1. Делаем секцию вертикальной */
+           .hero-section {
+               flex-direction: column;
+               height: auto; /* Высота подстраивается под контент */
+               padding: 100px 5% 40px 5%;
+               text-align: center;
+           }
+    /* 2. Уменьшаем текст */
+          .hero-logo-text { font-size: 2.2rem; margin-top: 20px; }
+          .hero-subtitle { font-size: 0.6rem; letter-spacing: 4px; }
+          .typing-container { 
+              font-size: 1.1rem; 
+              margin-bottom: 30px; 
+              margin-left: auto; 
+              margin-right: auto;
+          }
+
+    /* 3. Переносим картинки вниз */
+         .hero-left { 
+             flex: none; 
+             width: 100%; 
+             align-items: center; 
+         }
+    
+         .hero-right {
+             flex: none;
+             width: 100%;
+             height: auto; /* Фиксируем высоту блока с картинкой */
+             min-height: 350px;
+             margin-top: 20px;
+             padding-bottom: 30px;
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             position: relative;
+         }
+
+    /* 4. Настраиваем фон и космонавта для мобилок */
+         .hero-black-hole-bg {
+             width: 100vw; /* Занимает всю ширину */
+             height: 100vw;
+             right: auto;
+             background-size: contain;
+             position: relative; /* Меняем с absolute, чтобы он не вылезал из потока */
+             margin-top: -20%;
+         }
+    
+         .astronaut-container {
+             width: 265px; /* Уменьшаем размер космонавта */
+             height: 265px;
+             margin: 20px auto;
+         }
+     }
     
            .nav-links {
                position: absolute; top: 60px; right: 0; width: 100%;
@@ -1464,7 +1518,7 @@
 
     <div class="sol-metrics">
         <div class="metric-item">
-            <span class="metric-val">Ground Model: 0.825</span>
+            <span class="metric-val">Earth Model: 0.825</span>
             <p>ROC‑AUC | Risk range: 56%–91%</p>
         </div>
         <div class="metric-item">
