@@ -1183,6 +1183,63 @@
         opacity: 1 !important;
         transform: translate(0) !important;
     }
+    /* Адаптив для маленьких экранов */
+    @media (max-width: 900px) {
+        .what-happens-section {
+            padding: 60px 5%; /* Немного уменьшаем отступы для мобилок */
+        }
+
+        .wh-interactive-scheme {
+            flex-direction: column; /* Ставим элементы друг под друга */
+            height: auto; /* Убираем фиксированную высоту */
+            margin-bottom: 20px;
+        }
+
+        .wh-cards-container {
+            max-width: 100%;
+            width: 100%;
+            order: 1; /* Карточки будут первыми */
+        }
+
+        .wh-visual-container {
+            width: 100%;
+            margin-top: 30px;
+            order: 2; /* Космонавт будет вторым */
+            min-height: 450px;
+        }
+
+        .wh-astronaut-wrapper {
+            width: 100%; /* Делаем космонавта резиновым */
+            max-width: 320px;
+            height: auto;
+            aspect-ratio: 440/540;
+        }
+
+    /* Исправляем позиции маркеров для мобильного вида */
+        #marker-ebv { top: 15%; left: 10%; }
+        #marker-il6 { top: 45%; left: 5%; }
+        #marker-cortisol { top: 60%; right: 10%; }
+
+    /* Делаем подсказки (тултипы) безопасными для экрана */
+        .wh-tooltip {
+            width: 80vw; /* Ширина 80% от экрана */
+            max-width: 300px;
+            white-space: normal;
+        }
+        .what-happens-section { background-image: none; } /* Убираем фон с секции */
+    
+        .wh-visual-container {
+            background-image: url('блок3.png');
+            background-size: cover; /* Чтобы картинка заполнила контейнер */
+            background-position: center;
+            border-radius: 20px;
+            padding: 20px;
+        }
+
+        .wh-astronaut-wrapper {
+            max-width: 500px;
+        }
+    }
 </style>
 
 <section class="what-happens-section" id="what-happens">
@@ -1275,12 +1332,26 @@
 
             marker.addEventListener('mouseenter', () => {
                 tooltip.style.opacity = '1';
-                tooltip.style.transform = 'translateY(-5px)';
-                
-                const markerRect = marker.getBoundingClientRect();
-                const wrapperRect = marker.parentElement.getBoundingClientRect();
-                tooltip.style.left = (markerRect.left - wrapperRect.left + 35) + 'px';
-                tooltip.style.top = (markerRect.top - wrapperRect.top - 15) + 'px';
+    
+    // Получаем координаты того места, где находится звездочка
+                const rect = marker.getBoundingClientRect();
+    
+                if (window.innerWidth <= 900) {
+        // МОБИЛЬНЫЙ: жестко фиксируем по центру экрана
+                    tooltip.style.position = 'fixed';
+                    tooltip.style.left = '5%';
+                    tooltip.style.right = '5%';
+                    tooltip.style.top = (rect.top + 5) + 'px'; // Чуть ниже точки
+                    tooltip.style.width = '80%';
+                    tooltip.style.transform = 'none';
+                } else {
+        // ПК: оставляем как было (относительно родителя)
+                    tooltip.style.position = 'absolute';
+                    const containerRect = marker.parentElement.getBoundingClientRect();
+                    tooltip.style.left = (rect.left - containerRect.left + 35) + 'px';
+                    tooltip.style.top = (rect.top - containerRect.top - 15) + 'px';
+                    tooltip.style.width = '260px'; // Возвращаем ширину ПК
+                }
 
                 if(associatedCard) associatedCard.classList.add('active-card');
             });
