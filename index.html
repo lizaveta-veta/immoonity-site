@@ -105,6 +105,24 @@
            padding: 5px 0;
            filter: drop-shadow(0 0 15px rgba(255, 214, 10, 0.4));
        }
+       /* Скрываем бургер на больших экранах */
+       .menu-toggle { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+       .menu-toggle span { width: 25px; height: 3px; background: var(--accent-gold); border-radius: 2px; }
+
+       /* Адаптация под мобильные */
+       @media (max-width: 768px) {
+           .menu-toggle { display: flex; } /* Показываем бургер */
+    
+           .nav-links {
+               position: absolute; top: 60px; right: 0; width: 100%;
+               background: rgba(0, 0, 0, 0.95); flex-direction: column;
+               align-items: center; padding: 20px 0; gap: 20px;
+               transform: translateY(-150%); /* Прячем меню вверх */
+               transition: 0.3s ease;
+           }
+    
+           .nav-links.active { transform: translateY(0); } /* Показываем при клике */
+       }
 
         .nav-links {
             display: flex;
@@ -560,6 +578,9 @@
         <div class="logo-container">
             <img src="photo_5231328754636890024_c-Photoroom.png" alt="IMMOONITY" class="logo-img" onerror="this.src='https://i.postimg.cc/9F7stTLz/logo-placeholder.png'">
         </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
         <ul class="nav-links">
             <li><a href="#pain">The Pain</a></li>
             <li><a href="#what-happens">What happens</a></li>
@@ -607,6 +628,18 @@
                         });
                     }
                 }
+            });
+        });
+    </script>
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('.nav-links');
+            nav.classList.toggle('active');
+        }
+    // Закрытие меню при клике на ссылку (чтобы не перекрывало контент)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
             });
         });
     </script>
