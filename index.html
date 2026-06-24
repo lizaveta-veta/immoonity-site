@@ -1791,9 +1791,45 @@
     .pdf-icon {
         flex-shrink: 0;
     }
+    /* стили для заголовка на космическом фоне */
+    .demo-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Железное выравнивание по центру внутри блока */
+        text-align: center;  /* Выравнивание самого текста по центру */
+        margin-bottom: 35px; /* Немного уменьшили отступ, чтобы не разрывать экран */
+        padding: 0 20px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .demo-main-title {
+        font-family: 'Montserrat', 'Century Gothic', AppleGothic, sans-serif;
+        /* Уменьшили размер заголовка */
+        font-size: clamp(1.5rem, 3vw, 2.2rem); 
+        color: var(--accent-gold); 
+        margin: 0 auto 10px auto; /* Центрируем сам блок и задаем отступ вниз */
+        line-height: 1.3;
+        font-weight: 600;
+        max-width: 800px; /* Чтобы текст красиво разбивался на строки на широких экранах */
+    }
+    
+    .demo-subtitle {
+        font-family: 'Montserrat', 'Century Gothic', AppleGothic, sans-serif;
+        /* Уменьшили размер подзаголовка */
+        font-size: clamp(0.85rem, 1.5vw, 1rem);
+        color: #aaa; /* Мягкий серый цвет, чтобы не спорил с белым заголовком */
+        max-width: 650px;
+        margin: 0 auto; /* Центрируем подзаголовок на странице */
+        line-height: 1.5;
+    }
 </style>
 
 <section class="demo-wrapper" id="demo">
+    <div class="demo-header">
+        <h2 class="demo-main-title">Are you an astronaut or dreaming of space?</h2>
+        <p class="demo-subtitle">Try our demo model and find out how your immune system will behave during spaceflight</p>
+    </div>
     <div class="demo-card">
         <div class="tabs">
             <button class="tab-btn active" onclick="showTab('earth')">Earth Model</button>
