@@ -1760,6 +1760,37 @@
             grid-area: i; /* Ставим inputs вниз */
         }
     }
+    /* Стиль для кнопки-ссылки PDF */
+    .pdf-download-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 15px;
+        padding: 10px 20px;
+        background: rgba(255, 149, 0, 0.1);
+        border: 1px dashed #ff9500;
+        border-radius: 6px;
+        color: #ff9500;
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: bold;
+        transition: 0.3s ease;
+        cursor: pointer;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .pdf-download-btn:hover {
+        background: linear-gradient(45deg, #ff9500, #ffcc00);
+        color: #000;
+        border-style: solid;
+        box-shadow: 0 0 15px rgba(255, 149, 0, 0.4);
+    }
+
+    .pdf-icon {
+        flex-shrink: 0;
+    }
 </style>
 
 <section class="demo-wrapper" id="demo">
@@ -1792,6 +1823,16 @@
                     <p style="font-size: 0.7rem; color: #555; margin-top: 10px; font-style: italic;">
                         AI assistant: under construction. It's busy reading all the science papers so it can help you better. Stay tuned ;)
                     </p>
+                    <a href="IMMOONITY_REPORT_8956344300003621140006.pdf" target="_blank" download="IMMOONITY_Detailed_Report.pdf" class="pdf-download-btn">
+                        <svg class="pdf-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                        Download Detailed Report
+                    </a>
                 </div>
             </div>
             <button type="button" class="calc-btn" onclick="calculateRisk('earth-form')">Calculate Earth Risk</button>
@@ -1814,6 +1855,16 @@
                     <p style="font-size: 0.7rem; color: #555; margin-top: 10px; font-style: italic;">
                         AI assistant: under construction. It's busy reading all the science papers so it can help you better. Stay tuned ;)
                     </p>
+                    <a href="IMMOONITY_REPORT_8956344300003621140006.pdf" target="_blank" download="IMMOONITY_Detailed_Report.pdf" class="pdf-download-btn">
+                        <svg class="pdf-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                        Download Detailed Report
+                    </a>
                 </div>
             </div>
             <button type="button" class="calc-btn" onclick="calculateRisk('flight-form')">Calculate Flight Risk</button>
